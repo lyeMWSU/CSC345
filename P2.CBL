@@ -109,6 +109,9 @@
            05  DLT-NUM-USING           PIC ZZZ9-.
            05                          PIC X(27).
 
+
+
+
        01  CH-COLUMN-HEADING.
            05                          PIC X(30).
            05  CH-RECORD-NUM           PIC X(3) VALUE "RC#".
