@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 02/02/17                                ABC CORP                                PAGE  1                                             
 
 
@@ -14,3 +15,50 @@ VC                                                                A B C         
 Vc      24835183           BOLTS BY THE BUNDLE                    A B C             J                                               
 VC                                                                A B C             J                                               
 VC      13875186           FAMILY FRIENDS                         A B C             J                                               
+=======
+02/06/17                                VENDOR RECORD VALIDATION                                PAGE  1                             
+
+
+RC     VENDOR #       DATE DUE         VENDOR NAME           AMOUNT DUE      --  ERROR CODES  --                                    
+___    __________    __________    ____________________    _______________    _____________________                                 
+                                                                                                                                    
+
+VC      10045380      10/05/05     ABC ELECTRONICS               $12.98                                                             
+                                                                                                                                    
+
+VC                    09/26/05     XYZ COMPANY               00R 005 49         B             I                                     
+        ********                                            ************                                                            
+
+VT      12348760      11/15/05     QUALITY ASSURANCE CO       $4,000.53       A                                                     
+**                                                                                                                                  
+
+VC      A14BCF80      12/01/05                                $1,009.30           C       G                                         
+        ********                   ********************                                                                             
+
+VC      14873875      60/10/05      KOMPUTER KALEIDOSC.           14 58                 F   H                                       
+                      ***          *                                                                                                
+
+VC      12543951      02/04/05     MWSU                          183 45                                                             
+                                                                                                                                    
+
+VC      14385761      00/00/00     COMPANY PRESIDENT         012 485 3R                                                             
+                                                                                                                                    
+
+VC                      /  /                                                    B     E F G   I J                                   
+        ********      ********     ********************     ************                                                            02/06/17                                VENDOR RECORD VALIDATION                                PAGE  2                             
+
+
+RC     VENDOR #       DATE DUE         VENDOR NAME           AMOUNT DUE      --  ERROR CODES  --                                    
+___    __________    __________    ____________________    _______________    _____________________                                 
+                                                                                                                                    
+
+Vc      24835183      13/33/05     BOLTS BY THE BUNDLE           $14.89       A       E F                                           
+**                    ******                                                                                                        
+
+VC                    00/00/00                                  $200.00         B   D     G                                         
+        ********      ********     ********************     ************                                                            
+
+VC      13875186      09/18/05     FAMILY FRIENDS            010 000 0M                       I                                     
+                                                            ************                                                            
+ERRORS:    0    CORRECT:   11                                                                                                       
+>>>>>>> 5c7b6e1f7be6a98f750f607e9ff52cdf948bb08e

@@ -1,0 +1,66 @@
+03/06/17     REPORTS     PAGE  1                                                
+                                                                                
+EXCEPTION REPORT                                                                
+
+
+ NO.    CONTENTS            ABOVE                                               
+ ___    ________________    _____                                               
+
+ 02     032   200     02                                                        
+                                                                                
+
+ 03     0r4000700     03                                                        
+        **                                                                      
+
+ 05     073 73000     05                                                        
+                                                                                
+
+ 06     074000Q00     06                                                        
+                                                                                
+
+*07     075075000     07      750                                               
+          *                                                                     
+
+ 08     06105 100     08                                                        
+                                                                                
+
+ 09     011 52000     09                                                        
+                                                                                
+
+ 10     095000500     10                                                        
+          *                                                                     
+
+*12     125999999     12    9,999                                               
+        ***                                                                     
+
+ 19     08500050      19                                                        
+          *                                                                     
+
+ 21     125000899     21                                                        
+        ***                                                                     
+
+ 23     A01001111     23                                                        
+        **                                                                      
+
+
+
+
+SUMMARY REPORT                                                                  
+
+
+NO.    JOB NAMES             1         2         3         4         TOTALS     
+___    _________            ___       ___       ___       ___       ________    
+01     PRESIDENT                                                                
+02     SECRETARY                                                                
+03     VICE-PRESIDENT                                      7            7       
+04     MAID                 10        10         3                     30       
+05     TECH SUPPORT                   12                   4           46       
+06     ENGINEER                                            4           50       
+07     ATTORNEY                                                        50       
+08     REPRESENTATIVE        6                             4           60       
+09     DIRECTOR            100                                        160       
+10     JANITOR                                                        160       
+11     SECURITY                                                       160       
+        TOTALS             116        22         3        19          160       
+
+                                                                                
