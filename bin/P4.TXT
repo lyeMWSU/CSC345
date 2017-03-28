@@ -1,0 +1,72 @@
+03/07/17     REPORTS     PAGE  1                                                
+                                                                                
+EXCEPTION REPORT                                                                
+
+
+ NO.    CONTENTS            ABOVE                                               
+ ___    ________________    _____                                               
+
+ 02     DNT   020     02     080                                                
+           ****              ***                                                
+
+ 05     KCM 73000     05     600                                                
+           ****              ***                                                
+
+ 08     ALA05 100     08     750                                                
+          *****              ***                                                
+
+ 09     ALA 52011     09     750                                                
+          *****              ***                                                
+
+ 30                   30     110                                                
+        *******              ***                                                
+
+ 39     000000000     39     110                                                
+        *******              ***                                                
+
+ 42     HLM000rC0     42     505                                                
+        *******              ***                                                
+
+ 43     NYA           43     505                                                
+        *******              ***                                                
+
+ 44     NYM000pQ0     44     505                                                
+        *******              ***                                                
+
+ 45     ZZZZZZZZZ     45     505                                                
+        *******              ***                                                
+
+
+
+
+SUMMARY REPORT                                                                  
+
+
+NO.    JOB NAMES             1         2         3         4         TOTALS     
+___    _________            ___       ___       ___       ___       ________    
+
+AL     ALABAMA                                    2                        2    
+
+BL     BLACK LAGOON          30                  90                      120    
+
+DN     DRICKBURY ST          50                 600                      650    
+
+CA     CALIFORNIA           505                                          505    
+
+FL     FLORIDA               10        70        50        25            155    
+
+HL     HIGHLAND                                                                 
+
+JU     JUJULAND              80        20                                100    
+
+KC     KUKU LAND                                           40             40    
+
+LA     LALA LAND             90                 300                      390    
+
+MI     MIAMI                110                           780            890    
+
+NY     NEW YORK           1,110       300                 410          1,820    
+
+                 TOTALS   1,985       390     1,042     1,255          4,672    
+
+                                                                                

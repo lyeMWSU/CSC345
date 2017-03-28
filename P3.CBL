@@ -280,7 +280,6 @@
                END-IF
            END-IF.
 
-
            WRITE PRINT-RECORD FROM ER-ERROR-REPORT AFTER 2
            WRITE PRINT-RECORD FROM SL-STAR-LINE AFTER 1.
 
@@ -303,7 +302,6 @@
                UNTIL SS-SUB-EMP > 4.
 
            WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
-
 
        310-INNER-LOOP.
            MOVE SS-SUB-JOB TO DL-NUM.
@@ -339,8 +337,6 @@
                    TT-COL-TOT(SS-SUB)
                    MOVE TT-COL-TOT(SS-SUB) TO CT-TOTALS(SS-SUB)
            END-PERFORM.
-
-
 
        850-HEADINGS.
            ADD  1  TO PC-PAGE-NUM

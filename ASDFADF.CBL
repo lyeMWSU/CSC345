@@ -33,11 +33,12 @@
            05  WS-DAY                  PIC XX.
 
        01  INPUT-RECORD.
+           05  IR-REC-NUM              PIC 99.
            05  IR-JOB                  PIC XX.
            05  IR-EMP                  PIC X.
            05  IR-NUM-COMPLETED        PIC S9(4).
-           05  FILLER                  PIC X(7).
-           05  IR-REC-NUM              PIC 99.
+           05  IR-NUM-COMPLETED-X      REDEFINES IR-NUM-COMPLETED
+                                       PIC X(4).
 
        01  TT-TABLE.
            05  PIC X(38)               VALUE
@@ -71,9 +72,6 @@
                    15  TT-EMP-TYPE         PIC X.
                    15  TT-NUM-COM          PIC 99999.
 
-       01  TT-TOTAL-TABLE.
-           05  TT-COL-TOTALS OCCURS 4  PIC 9(6).
-
        01  ST-SUMMARY-TABLE VALUE ZEROS.
            05  ST-JOB-NUM OCCURS 11 TIMES.
                10  ST-EMP-NUM OCCURS 4 TIMES.
@@ -100,32 +98,24 @@
        01  ER-EXCEPTION-REPORT.
            05  ER-STAR                 PIC X.
            05  ER-NUM                  PIC 99.
-           05  FILLER                  PIC X(5).
+           05                          PIC XX.
            05  ER-CONTENTS             PIC X(16).
-           05  FILLER                  PIC X(5).
+           05                          PIC XX.
            05  ER-50                   PIC 999.
 
        01  CT-COLUMN-TOTAL.
-           05  FILLER                  PIC X(17).
-           05                          PIC X(6) VALUE "TOTALS".
-           05  CT-TOTALS OCCURS 4      PIC -ZZZ,ZZ9BB.
-           05  FILLER                  PIC X(3).
-           05  CT-GRAND-TOTALS         PIC ZZ,ZZZ,ZZ9-.
+           05                          PIC X.
 
        01  SL-STAR-LINE.
            05                          PIC X.
            05  SL-REC-NUM              PIC XX.
-           05  FILLER                  PIC X(5).
+           05                          PIC XX.
            05  SL-INPUT-REC.
                10  SL-JOB              PIC XX.
                10  SL-EMPLOYEE-TITLE   PIC X.
                10  SL-NUMBER-COMPLETED PIC XXXX.
-           05  FILLER                  PIC X(14).
-           05  SL-50                   PIC XXX.
-
-       01  TL-TOTALS-LINE.
-           05  TL-NUM-COMPLETE OCCURS 4 TIMES
-                                       PIC ZZZ,ZZZBB-.
+           05                          PIC XX.
+           05  SL-50                PIC XXX.
 
       *HEADING AREAS...
        01  PC-PAGE-CONTROLS.
@@ -145,75 +135,16 @@
            05  FILLER                  PIC X.
            05  HL-PAGE-NUM             PIC Z9.
 
-       01  HEADING-TWO.
-           05                          PIC X(3) VALUE "NO.".
-           05  FILLER                  PIC X(4) VALUE SPACES.
-           05                          PIC X(9) VALUE "JOB NAMES".
-           05  FILLER                  PIC X(13) VALUE SPACES.
-           05                          PIC X(1) VALUE "1".
-           05  FILLER                  PIC X(9) VALUE SPACES.
-           05                          PIC X(1) VALUE "2".
-           05  FILLER                  PIC X(9) VALUE SPACES.
-           05                          PIC X(1) VALUE "3".
-           05  FILLER                  PIC X(9) VALUE SPACES.
-           05                          PIC X(1) VALUE "4".
-           05  FILLER                  PIC X(9) VALUE SPACES.
-           05                          PIC X(6) VALUE "TOTALS".
-
-       01  HEADING-THREE.
-           05                          PIC X(3) VALUE ALL "_".
-           05                          PIC X(4) VALUE SPACES.
-           05                          PIC X(9) VALUE ALL "_".
-           05                          PIC X(12) VALUE SPACES.
-           05                          PIC X(3) VALUE ALL "_".
-           05  FILLER                  PIC X(7) VALUE SPACES.
-           05                          PIC X(3) VALUE ALL "_".
-           05  FILLER                  PIC X(7) VALUE SPACES.
-           05                          PIC X(3) VALUE ALL "_".
-           05  FILLER                  PIC X(7) VALUE SPACES.
-           05                          PIC X(3) VALUE ALL "_".
-           05  FILLER                  PIC X(7) VALUE SPACES.
-           05                          PIC X(8) VALUE ALL "_".
-
-       01  HEADING-FOUR.
-           05  FILLER                  PIC X.
-           05                          PIC X(3) VALUE "NO.".
-           05  FILLER                  PIC X(4) VALUE SPACES.
-           05                          PIC X(10) VALUE "CONTENTS".
-           05  FILLER                  PIC X(10) VALUE SPACES.
-           05                          PIC X(5) VALUE "ABOVE".
-
-       01  HEADING-FIVE.
-           05                          PIC X.
-           05                          PIC X(3) VALUE ALL "_".
-           05                          PIC X(4).
-           05                          PIC X(16) VALUE ALL "_".
-           05                          PIC X(4).
-           05                          PIC X(5) VALUE ALL "_".
-
-       01  HEADING-TITLE.
-           05                          PIC X(14) VALUE "SUMMARY REPORT".
-
-       01  HEADING-TITLE-TWO.
-           05                          PIC X(20) VALUE
-                                       "EXCEPTION REPORT".
-
        PROCEDURE DIVISION.
        000-MAINLINE.
            PERFORM 030-OPEN
            PERFORM 100-INITIALIZE
            PERFORM 850-HEADINGS
-           PERFORM 250-EXCEPTION-HEADINGS
            PERFORM 200-PROCESSING
-           PERFORM 320-SUMMARY-HEADINGS
            PERFORM 300-UNLOAD
                VARYING ITEM-NDX
                FROM 1 BY 1
                UNTIL ITEM-NDX > 11
-           PERFORM 710-COL-TOTALS
-               VARYING COM-NDX
-               FROM 1 BY 1
-               UNTIL COM-NDX > 4
            PERFORM 700-TOTALS
            PERFORM 020-CLOSE.
 
@@ -232,12 +163,7 @@
            ACCEPT  WS-DATE FROM DATE
            MOVE    WS-MO TO HL-MO
            MOVE    WS-DAY TO HL-DAY
-           MOVE    WS-YY TO HL-YY
-
-           INITIALIZE TC-TOTAL-COUNTS
-           INITIALIZE SL-STAR-LINE
-           MOVE SPACES TO ER-STAR
-           MOVE ZEROS TO ER-50.
+           MOVE    WS-YY TO HL-YY.
 
 
        200-PROCESSING.
@@ -251,7 +177,7 @@
            END-PERFORM.
 
        210-PROCESSING.
-
+           INITIALIZE SL-STAR-LINE
            IF IR-NUM-COMPLETED > 0 AND IR-NUM-COMPLETED NUMERIC
                IF IR-NUM-COMPLETED > 50
                    MOVE IR-REC-NUM TO ER-NUM
@@ -264,17 +190,17 @@
                MOVE ALL "*" TO SL-NUMBER-COMPLETED
                MOVE IR-REC-NUM TO ER-NUM
                MOVE IR-RECORD TO ER-CONTENTS
-
-               WRITE PRINT-RECORD FROM ER-EXCEPTION-REPORT AFTER 2
-               WRITE PRINT-RECORD FROM SL-STAR-LINE AFTER 1
            END-IF
+
       *TOTALS
            IF PC-LINES-USED > PC-LINES-PER-PAGE
                MOVE ZEROS TO PC-LINES-USED
            END-IF.
 
        220-EXCEPTION.
-
+           INITIALIZE SL-STAR-LINE
+           MOVE SPACES TO ER-STAR
+           MOVE ZEROS TO ER-50
            MOVE IR-RECORD TO ER-CONTENTS
 
            IF IR-JOB ALPHABETIC
@@ -320,12 +246,6 @@
                    END-SEARCH
            END-SEARCH.
 
-       250-EXCEPTION-HEADINGS.
-           WRITE PRINT-RECORD FROM HEADING-TITLE-TWO AFTER 1
-           WRITE PRINT-RECORD FROM HEADING-FOUR AFTER 3.
-           WRITE PRINT-RECORD FROM HEADING-FIVE AFTER 1.
-
-
        300-UNLOAD.
            INITIALIZE TC-ROW-TOTAL
            MOVE TT-JOB (ITEM-NDX) TO DL-JOB
@@ -335,37 +255,26 @@
                FROM 1 BY 1
                UNTIL COM-NDX > 4
 
-           WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 2.
+           WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
 
        310-INNER-LOOP.
            MOVE TT-NUM-COM (ITEM-NDX, COM-NDX) TO
-               DL-NUM-COMPLETED (COM-NDX)
-           ADD TT-NUM-COM (ITEM-NDX, COM-NDX) TO TC-ROW-TOTAL
-           MOVE TC-ROW-TOTAL TO DL-ROW-TOTAL
-           ADD TT-NUM-COM (ITEM-NDX, COM-NDX) TO TC-GRAND-TOTAL.
-
-
-       320-SUMMARY-HEADINGS.
-           WRITE PRINT-RECORD FROM HEADING-TITLE AFTER 5
-           WRITE PRINT-RECORD FROM HEADING-TWO
-                   AFTER ADVANCING 3 LINES
-           WRITE PRINT-RECORD FROM HEADING-THREE
-                   AFTER ADVANCING 1 LINE.
+           DL-NUM-COMPLETED (COM-NDX).
 
        700-TOTALS.
-           MOVE TC-GRAND-TOTAL TO CT-GRAND-TOTALS
-           WRITE PRINT-RECORD FROM CT-COLUMN-TOTAL AFTER 2
+           WRITE PRINT-RECORD FROM CT-COLUMN-TOTAL AFTER 1
            ADD 1 TO PC-LINES-USED
-           MOVE SPACES TO PRINT-RECORD
-           WRITE PRINT-RECORD FROM TL-TOTALS-LINE AFTER 2.
+           MOVE SPACES TO PRINT-RECORD.
 
 
        710-COL-TOTALS.
-           PERFORM VARYING ITEM-NDX FROM 1 BY 1 UNTIL ITEM-NDX > 11
-               ADD TT-NUM-COM (ITEM-NDX, COM-NDX) TO
-                   TT-COL-TOTALS (COM-NDX)
-               MOVE TT-COL-TOTALS (COM-NDX) TO CT-TOTALS (COM-NDX)
-           END-PERFORM.
+      *>      PERFORM VARYING ITEM-NDX
+      *>          FROM 1 BY 1
+      *>          UNTIL ITEM-NDX > 11
+      *>              ADD ST-NUM-COMPLETE(ITEM-NDX) TO
+      *>              TT-COL-TOT(SS-SUB)
+      *>              MOVE TT-COL-TOT(SS-SUB) TO CT-TOTALS(SS-SUB)
+      *>      END-PERFORM.
 
        850-HEADINGS.
            ADD  1  TO PC-PAGE-NUM
