@@ -1,0 +1,15 @@
+004FAVORITE TOOTHBRUSH                  01098    001100     125
+743BUDGET MOTEL GUIDE                   00606    006100     125
+010BEST FRIEND                          14093    010015     050
+085HYMNAL                               01245    005010     085
+900RAPE WHISTLES                        00104    012100     155
+115BROWN PAPER BAGS                     00005    100150     025
+1752500VITAMIN E TABLETS                10000    002012     010
+280RESERVED PARKING STICKER             99999    001100     300
+400FRENCH POSTCARD                      00075    025050     050
+001WHITE LIGHTNING                      00010    035015     175
+565BLACK BOOK--FILLED IN                00100    003006     100
+800SATIN SHEET SET                      05595    001012     100
+1752500VITAMIN E TABLETS                10000    002012     010
+899HOLLYWOOD GIFT CERT.                 10000    006010     100
+
