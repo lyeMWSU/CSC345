@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+02/02/17                                ABC CORP                                PAGE  1                                             
+
+
+RC     VENDOR #       DATE DUE           VENDOR NAME               AMOUNT DUE      --  ERROR CODES  --                              
+___    __________    __________    _________________________    _______________    _____________________                                                                                                                                                                
+VC      10045380           ABC ELECTRONICS                                                                                          
+VC                         XYZ COMPANY                              B                                                               
+VT      12348760           QUALITY ASSURANCE CO                   A B                                                               
+VC      A14BCF80                                                  A B C                                                             
+VC      14873875            KOMPUTER KALEIDOSC.                   A B C                                                             
+VC      12543951           MWSU                                   A B C                                                             
+VC      14385761           COMPANY PRESIDENT                      A B C                                                             
+VC                                                                A B C             J                                               
+Vc      24835183           BOLTS BY THE BUNDLE                    A B C             J                                               
+VC                                                                A B C             J                                               
+VC      13875186           FAMILY FRIENDS                         A B C             J                                               
+=======
 02/06/17                                VENDOR RECORD VALIDATION                                PAGE  1                             
 
 
@@ -43,3 +61,4 @@ VC                    00/00/00                                  $200.00         
 VC      13875186      09/18/05     FAMILY FRIENDS            010 000 0M                       I                                     
                                                             ************                                                            
 ERRORS:    0    CORRECT:   11                                                                                                       
+>>>>>>> 5c7b6e1f7be6a98f750f607e9ff52cdf948bb08e

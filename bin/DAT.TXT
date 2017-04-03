@@ -1,0 +1,38 @@
+02/03/17                                ABC CORP                                PAGE  1                                             
+
+
+RC     VENDOR #       DATE DUE           VENDOR NAME               AMOUNT DUE      --  ERROR CODES  --                              
+___    __________    __________    _________________________    _______________    _____________________                                                                                                                                                                
+
+VC      10045380      10/05/05     ABC ELECTRONICS                 $  1,298.00                                                      
+                                                                                                                                    
+
+VC                    09/26/05     XYZ COMPANY                      00R 005 49        B                                             
+        ********                                                                                                                    
+
+VT      12348760      11/15/05     QUALITY ASSURANCE CO            $400,053.00      A                                               
+**                                                                                                                                  
+
+VC      A14BCF80      12/01/05                                     $100,930.00                                                      
+                                                                                                                                    
+
+VC      14873875      60/10/05      KOMPUTER KALEIDOSC.                  14 58                                                      
+                                                                                                                                    
+
+VC      12543951      02/04/05     MWSU                                 183 45                                                      
+                                                                                                                                    
+
+VC      14385761      00/00/00     COMPANY PRESIDENT                012 485 3R                                                      
+                                                                                                                                    
+
+VC                      /  /                                                          B                                             
+        ********                                                                                                                    
+
+Vc      24835183      13/33/05     BOLTS BY THE BUNDLE             $  1,489.00      A                                               
+**                                                                                                                                  
+
+VC                    00/00/00                                     $ 20,000.00        B                                             
+        ********                                                                                                                    
+
+VC      13875186      09/18/05     FAMILY FRIENDS                   010 000 0M                                                      
+                                                                                                                                    
