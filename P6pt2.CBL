@@ -15,6 +15,7 @@
                RECORD KEY IS PRINT-REC.
 
            SELECT OUTPUT-FILE
+      *         ASSIGN TO "P6PT2.TXT".
                ASSIGN TO DISPLAY.
 
        DATA DIVISION.
@@ -59,4 +60,4 @@
        200-PROCESSING.
            MOVE INPUT-REC TO DL-DETAIL-LINE
 
-           WRITE PRINT-REC FROM DL-DETAIL-LINE.
+           WRITE PRINT-REC FROM DL-DETAIL-LINE AFTER 1.

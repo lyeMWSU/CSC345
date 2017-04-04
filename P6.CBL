@@ -9,7 +9,6 @@
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-
            SELECT INPUT-FILE
            ASSIGN TO "ADV6MSTR.TXT"
            ORGANIZATION LINE SEQUENTIAL.
@@ -26,7 +25,6 @@
 
            SELECT OUTPUT-FILE
            ASSIGN TO DISPLAY.
-
        DATA DIVISION.
        FILE SECTION.
        FD  INPUT-FILE.
@@ -44,9 +42,7 @@
 
        FD  OUTPUT-FILE.
        01  PRINT-RECORD                PIC X(80).
-
        WORKING-STORAGE SECTION.
-
        01  WS-DATE.
            05  WS-YY                   PIC XX.
            05  WS-MO                   PIC XX.
@@ -66,15 +62,16 @@
       *OUTPUT...
        01  DL-DETAIL-LINE.
            05  DL-PRO-NUM              PIC XXX.
-           05  DL-PRO-DES              PIC X(26).
+           05  DL-PRO-DES              PIC X(27).
            05  DL-PRICE                PIC S999V99.
            05  DL-MIN-ORD              PIC XXX.
            05  DL-QTY-DIS              PIC XXX.
            05  DL-DIS-PER              PIC SV999.
+           05  DL-ZEROS                PIC 9(7).
 
-       01  DR-RECORD                   VALUE SPACES.
-           05  DR-REC                  PIC X(43).
-           05  FILLER                  PIC X(10).
+       01  DR-RECORD.
+           05  DR-REC                  PIC X(63).
+           05  FILLER                  PIC X(5).
            05  DR-MESSAGE              PIC X(10).
 
       *HEADING AREAS...
@@ -89,18 +86,19 @@
                10 HL-DAY               PIC XX/.
                10 HL-YY                PIC XX.
            05  FILLER                  PIC X(5).
-           05                          PIC X(7) VALUE "REPORTS".
+           05  HL-HEADING              PIC X(20) VALUE SPACES.
            05  FILLER                  PIC X(5).
            05                          PIC X(4) VALUE "PAGE".
            05  HL-PAGE-NUM             PIC Z9.
 
        01  SWITCHES.
-           05  IR-SWITCH               PIC XXX VALUE "NO".
+           05  IR-SWITCH               PIC XXX.
            05  SORT-SWITCH             PIC XX.
-           05  OR-SWITCH               PIC XXX VALUE "NO".
+           05  OR-SWITCH               PIC XXX.
 
        PROCEDURE DIVISION.
        000-MAINLINE.
+           PERFORM 100-INITIALIZE
            SORT SORT-FILE
                ON ASCENDING KEY SR-NUM
       *>          USING   INPUT-FILE
@@ -108,9 +106,9 @@
                INPUT PROCEDURE IS 400-INPUT
                OUTPUT PROCEDURE IS 410-OUTPUT
            STOP RUN.
-
        100-INITIALIZE.
            MOVE "NO " TO IR-SWITCH
+           MOVE "NO" TO OR-SWITCH
       *DATE
            ACCEPT WS-DATE FROM DATE
            MOVE WS-MO TO HL-MO
@@ -126,16 +124,14 @@
            MOVE IR-QTY-DIS TO DL-QTY-DIS
            MOVE IR-DIS-PER TO DL-DIS-PER
 
-           MOVE INPUT-RECORD TO DR-RECORD
+           MOVE INPUT-RECORD TO DR-REC
            WRITE PRINT-RECORD FROM DR-RECORD AFTER PAGE
-
            MOVE DL-DETAIL-LINE TO SORT-RECORD
            RELEASE SORT-RECORD.
 
        210-PROCESSING.
            WRITE SR-SORTED-RECORD
            MOVE SORT-RECORD TO DR-RECORD
-
            IF SORT-SWITCH = "00"
                MOVE "WRITTEN" TO DR-MESSAGE
            ELSE
@@ -145,17 +141,15 @@
                    DISPLAY SORT-SWITCH
                END-IF
            END-IF
-
            WRITE PRINT-RECORD FROM DR-RECORD AFTER PAGE
-
            RETURN SORT-FILE INTO SR-SORTED-RECORD
                AT END
                    MOVE "YES" TO OR-SWITCH.
-
        400-INPUT.
            OPEN INPUT INPUT-FILE
                 OUTPUT OUTPUT-FILE
-           PERFORM 100-INITIALIZE
+
+           MOVE "INPUT PROCEUDRE" TO HL-HEADING
            PERFORM 850-HEADINGS
 
            PERFORM UNTIL IR-SWITCH = "YES"
@@ -168,8 +162,9 @@
            END-PERFORM
            CLOSE INPUT-FILE.
 
-
        410-OUTPUT.
+           MOVE "OUTPUT PROCEDURE" TO HL-HEADING
+           PERFORM 850-HEADINGS
 
            OPEN OUTPUT SORTED-FILE
            MOVE "NO" TO OR-SWITCH
@@ -177,7 +172,6 @@
                AT END
                    MOVE "YES" TO OR-SWITCH
            END-RETURN
-
            PERFORM 210-PROCESSING
                UNTIL OR-SWITCH = "YES"
            CLOSE SORTED-FILE
