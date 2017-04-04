@@ -1,17 +1,1 @@
-04/03/17     REPORTS     PAGE 1                                                 
-                                                                                
-  4   FAVORITE TOOTHBRUSH           10.98     1   100   .125                    
-743   BUDGET MOTEL GUIDE             6.06     6   100   .125                    
- 10   BEST FRIEND                  140.93    10    15   .050                    
- 85   HYMNAL                        12.45     5    10   .085                    
-900   RAPE WHISTLES                  1.04    12   100   .155                    
-115   BROWN PAPER BAGS               0.05   100   150   .025                    
-175   2500VITAMIN E TABLETS        100.00     2    12   .010                    
-280   RESERVED PARKING STICKER     999.99     1   100   .300                    
-400   FRENCH POSTCARD                0.75    25    50   .050                    
-  1   WHITE LIGHTNING                0.10    35    15   .175                    
-565   BLACK BOOK--FILLED IN          1.00     3     6   .100                    
-800   SATIN SHEET SET               55.95     1    12   .100                    
-175   2500VITAMIN E TABLETS        100.00     2    12   .010                    
-899   HOLLYWOOD GIFT CERT.         100.00     6    10   .100                    
-                                      .00               .000                    
+001WHITE LIGHTNING                                                              004FAVORITE TOOTHBRUSH                                                          010BEST FRIEND                                                                  085HYMNAL                                                                       115BROWN PAPER BAGS                                                             1752500VITAMIN E TABLETS                                                        1752500VITAMIN E TABLETS                                                        280RESERVED PARKING STICKER                                                     400FRENCH POSTCARD                                                              565BLACK BOOK--FILLED IN                                                        743BUDGET MOTEL GUIDE                                                           800SATIN SHEET SET                                                              899HOLLYWOOD GIFT CERT.                                                         900RAPE WHISTLES                                                                

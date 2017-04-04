@@ -9,26 +9,38 @@
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
+
            SELECT INPUT-FILE
            ASSIGN TO "ADV6MSTR.TXT"
            ORGANIZATION LINE SEQUENTIAL.
 
-      *>      SELECT SORT-FILE
-      *>      ASSIGN TO "SORT-WORK".
+           SELECT SORT-FILE
+           ASSIGN TO "SORT-WORK".
 
+           SELECT SORTED-FILE
+           ASSIGN "MSTRISAM.TXT"
+           ORGANIZATION IS INDEXED
+           ACCESS MODE IS SEQUENTIAL
+           RECORD KEY IS SR-ISAM-NUM
+           FILE STATUS IS SORT-SWITCH.
 
            SELECT OUTPUT-FILE
-           ASSIGN TO "P6.TXT".
+           ASSIGN TO DISPLAY.
 
        DATA DIVISION.
        FILE SECTION.
        FD  INPUT-FILE.
        01  IR-RECORD                   PIC X(80).
 
-      *>  SD  SORT-FILE.
-      *>  01  SORT-RECORD.
-      *>      05  SR-NUM                  PIC X(3).
-      *>      05                          PIC X(35).
+       SD  SORT-FILE.
+       01  SORT-RECORD.
+           05  SR-NUM                  PIC X(3).
+           05                          PIC X(35).
+
+       FD  SORTED-FILE.
+       01  SR-SORTED-RECORD.
+           05  SR-ISAM-NUM             PIC XXX.
+           05                          PIC X(35).
 
        FD  OUTPUT-FILE.
        01  PRINT-RECORD                PIC X(80).
@@ -49,23 +61,21 @@
            05  IR-MIN-ORD              PIC 999.
            05  IR-QTY-DIS              PIC 999.
            05  FILLER                  PIC X(5).
-           05  IR-DIS-PER              PIC V999.
-
+           05  IR-DIS-PER              PIC SV999.
 
       *OUTPUT...
        01  DL-DETAIL-LINE.
-           05  DL-PRO-NUM              PIC ZZ9.
-           05  FILLER                  PIC X(3).
+           05  DL-PRO-NUM              PIC XXX.
            05  DL-PRO-DES              PIC X(26).
-           05  FILLER                  PIC X(3).
-           05  DL-PRICE                PIC ZZ9.99.
-           05  FILLER                  PIC X(3).
-           05  DL-MIN-ORD              PIC ZZ9.
-           05  FILLER                  PIC X(3).
-           05  DL-QTY-DIS              PIC ZZ9.
-           05  FILLER                  PIC X(3).
-           05  DL-DIS-PER              PIC .999.
+           05  DL-PRICE                PIC S999V99.
+           05  DL-MIN-ORD              PIC XXX.
+           05  DL-QTY-DIS              PIC XXX.
+           05  DL-DIS-PER              PIC SV999.
 
+       01  DR-RECORD                   VALUE SPACES.
+           05  DR-REC                  PIC X(43).
+           05  FILLER                  PIC X(10).
+           05  DR-MESSAGE              PIC X(10).
 
       *HEADING AREAS...
        01  PC-PAGE-CONTROLS.
@@ -85,31 +95,22 @@
            05  HL-PAGE-NUM             PIC Z9.
 
        01  SWITCHES.
-           05  EOD                         PIC XXX.
+           05  IR-SWITCH               PIC XXX VALUE "NO".
+           05  SORT-SWITCH             PIC XX.
+           05  OR-SWITCH               PIC XXX VALUE "NO".
+
        PROCEDURE DIVISION.
        000-MAINLINE.
-      *INITIALIZATION SECTION
-           OPEN INPUT INPUT-FILE
-               OUTPUT OUTPUT-FILE
-           PERFORM 100-INITIALIZE
-           PERFORM 850-HEADINGS
-      *PROCESSING SECTION
-           PERFORM UNTIL EOD = "YES"
-               READ INPUT-FILE INTO INPUT-RECORD
-                   AT END
-                       MOVE "YES" TO EOD
-                   NOT AT END
-                       PERFORM 200-PROCESSING
-               END-READ
-           END-PERFORM
-
-      *TERMINATION SECTION
-           CLOSE INPUT-FILE
-                 OUTPUT-FILE
+           SORT SORT-FILE
+               ON ASCENDING KEY SR-NUM
+      *>          USING   INPUT-FILE
+      *>          GIVING  OUTPUT-FILE
+               INPUT PROCEDURE IS 400-INPUT
+               OUTPUT PROCEDURE IS 410-OUTPUT
            STOP RUN.
 
        100-INITIALIZE.
-           MOVE "NO " TO EOD
+           MOVE "NO " TO IR-SWITCH
       *DATE
            ACCEPT WS-DATE FROM DATE
            MOVE WS-MO TO HL-MO
@@ -125,7 +126,62 @@
            MOVE IR-QTY-DIS TO DL-QTY-DIS
            MOVE IR-DIS-PER TO DL-DIS-PER
 
-           WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
+           MOVE INPUT-RECORD TO DR-RECORD
+           WRITE PRINT-RECORD FROM DR-RECORD AFTER PAGE
+
+           MOVE DL-DETAIL-LINE TO SORT-RECORD
+           RELEASE SORT-RECORD.
+
+       210-PROCESSING.
+           WRITE SR-SORTED-RECORD
+           MOVE SORT-RECORD TO DR-RECORD
+
+           IF SORT-SWITCH = "00"
+               MOVE "WRITTEN" TO DR-MESSAGE
+           ELSE
+               IF SORT-SWITCH = "22"
+                   MOVE "DUPLICATE" TO DR-MESSAGE
+               ELSE
+                   DISPLAY SORT-SWITCH
+               END-IF
+           END-IF
+
+           WRITE PRINT-RECORD FROM DR-RECORD AFTER PAGE
+
+           RETURN SORT-FILE INTO SR-SORTED-RECORD
+               AT END
+                   MOVE "YES" TO OR-SWITCH.
+
+       400-INPUT.
+           OPEN INPUT INPUT-FILE
+                OUTPUT OUTPUT-FILE
+           PERFORM 100-INITIALIZE
+           PERFORM 850-HEADINGS
+
+           PERFORM UNTIL IR-SWITCH = "YES"
+               READ INPUT-FILE INTO INPUT-RECORD
+                   AT END
+                       MOVE "YES" TO IR-SWITCH
+                   NOT AT END
+                       PERFORM 200-PROCESSING
+               END-READ
+           END-PERFORM
+           CLOSE INPUT-FILE.
+
+
+       410-OUTPUT.
+
+           OPEN OUTPUT SORTED-FILE
+           MOVE "NO" TO OR-SWITCH
+           RETURN SORT-FILE INTO SR-SORTED-RECORD
+               AT END
+                   MOVE "YES" TO OR-SWITCH
+           END-RETURN
+
+           PERFORM 210-PROCESSING
+               UNTIL OR-SWITCH = "YES"
+           CLOSE SORTED-FILE
+                 OUTPUT-FILE.
 
        850-HEADINGS.
            ADD 1 TO PC-PAGE-NUM
