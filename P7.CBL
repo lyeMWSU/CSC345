@@ -18,15 +18,14 @@
            ASSIGN TO "SORT-WORK".
 
            SELECT SORTED-FILE
-           ASSIGN "MSTR.TXT"
+           ASSIGN "MSTRISAM.TXT"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS SEQUENTIAL
            RECORD KEY IS SR-ISAM-NUM
            FILE STATUS IS SORT-SWITCH.
 
            SELECT OUTPUT-FILE
-      *     ASSIGN TO DISPLAY.
-           ASSIGN TO "P6.TXT".
+           ASSIGN TO DISPLAY.
 
        DATA DIVISION.
        FILE SECTION.
