@@ -1,0 +1,57 @@
+
+
+004FAVORITE TOOTHBRUSH                  01098    001100     125                 
+
+743BUDGET MOTEL GUIDE                   00606    006100     125                 
+
+010BEST FRIEND                          14093    010015     050                 
+
+085HYMNAL                               01245    005010     085                 
+
+900RAPE WHISTLES                        00104    012100     155                 
+
+115BROWN PAPER BAGS                     00005    100150     025                 
+
+1752500VITAMIN E TABLETS                10000    002012     010                 
+
+280RESERVED PARKING STICKER             99999    001100     300                 
+
+400FRENCH POSTCARD                      00075    025050     050                 
+
+001WHITE LIGHTNING                      00010    035015     175                 
+
+565BLACK BOOK--FILLED IN                00100    003006     100                 
+
+800SATIN SHEET SET                      05595    001012     100                 
+
+1752500VITAMIN E TABLETS                10000    002012     010                 
+
+899HOLLYWOOD GIFT CERT.                 10000    006010     100                 
+
+001WHITE LIGHTNING            000100350151750000000                WRITTEN      
+
+004FAVORITE TOOTHBRUSH        010980011001250000000                WRITTEN      
+
+010BEST FRIEND                140930100150500000000                WRITTEN      
+
+085HYMNAL                     012450050100850000000                WRITTEN      
+
+115BROWN PAPER BAGS           000051001500250000000                WRITTEN      
+
+1752500VITAMIN E TABLETS      100000020120100000000                WRITTEN      
+
+1752500VITAMIN E TABLETS      100000020120100000000                DUPLICATE    
+
+280RESERVED PARKING STICKER   999990011003000000000                WRITTEN      
+
+400FRENCH POSTCARD            000750250500500000000                WRITTEN      
+
+565BLACK BOOK--FILLED IN      001000030061000000000                WRITTEN      
+
+743BUDGET MOTEL GUIDE         006060061001250000000                WRITTEN      
+
+800SATIN SHEET SET            055950010121000000000                WRITTEN      
+
+899HOLLYWOOD GIFT CERT.       100000060101000000000                WRITTEN      
+
+900RAPE WHISTLES              001040121001550000000                WRITTEN      

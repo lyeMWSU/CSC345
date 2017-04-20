@@ -15,7 +15,8 @@
                RECORD KEY IS PRINT-REC.
 
            SELECT OUTPUT-FILE
-               ASSIGN TO DISPLAY.
+      *         ASSIGN TO DISPLAY
+               ASSIGN TO "P6DUMP.TXT".
 
        DATA DIVISION.
        FILE SECTION.
@@ -37,7 +38,7 @@
 
        PROCEDURE DIVISION.
 
-       100-MAIN-MODULE.
+       000-MAIN-MODULE.
            OPEN INPUT  INPUT-FILE
                 OUTPUT OUTPUT-FILE
 

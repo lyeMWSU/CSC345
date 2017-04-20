@@ -1,0 +1,16 @@
+04/19/17   TRANSACTION REPORT       PAGE 1                                                                                                                                                                                                                              
+LONELY LEO                    012     010                                                                                           
+CHARLIE CHEAP                 001     743                                                                                           
+WIDOW LADY                    123     565                                                                                           
+MISSIONARY MIKE               999     085                                                                                           
+UNKNOWN COMIC                 003     115                                                                                           
+MUDFENCE MARTHA               200     115                                                                                           
+SAM SENILE                    007     175                                                                                           
+ERIK ESTRADSKI                001     204                                                                                           
+SPACE CADET                   002     950                                                                                           
+DATING BUREAU                 004     565                                                                                           
+DORM COUNCIL                  450     900                                                                                           
+LONESOME SAL                  001     010                                                                                           
+BROADMOOR COUNCIL             020     900                                                                                           
+DIRTY OLD LADY                010     899                                                                                           
+LAST CUSTOMER                 999     999                                                                                           

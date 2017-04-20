@@ -1,0 +1,57 @@
+04/19/17     INPUT PROCEDURE       PAGE 1                                                                                                                       
+
+004EROTIC TOOTHBRUSH                    01098    001100     125                 
+
+085HYMNAL                               01245    005010     085                 
+
+010INFLATABLE ENEMY                     14095    005010     050                 
+
+899SEARS GIFT CERT.                     10000    006010     100                 
+
+115BROWN PAPER BAGS                     00005    100150     025                 
+
+1752500VITAMIN E TABLETS                10000    002012     010                 
+
+743BUDGET MOTEL GUIDE                   00606    006100     125                 
+
+280RESERVED PARKING STICKER             99999    001100     300                 
+
+565BLACK BOOK--FILLED IN                00100    003006     100                 
+
+010BEST FRIEND                          14093    010015     050                 
+
+280STUDENT PARKING STICKER              00010    001100     255                 
+
+800SATIN SHEET SET                      05595    001012     100                 
+
+400FRENCH POSTCARD                      00075    025050     050                 
+
+900PLASTIC WHISTLES                     00104    012100     155                 04/19/17     OUTPUT PROCEDURE      PAGE 2                                                                                                                       
+
+004EROTIC TOOTHBRUSH          010980011001250000000                 WRITTEN     
+
+010INFLATABLE ENEMY           140950050100500000000                 WRITTEN     
+
+010BEST FRIEND                140930100150500000000                 DUPLICATE   
+
+085HYMNAL                     012450050100850000000                 WRITTEN     
+
+115BROWN PAPER BAGS           000051001500250000000                 WRITTEN     
+
+1752500VITAMIN E TABLETS      100000020120100000000                 WRITTEN     
+
+280RESERVED PARKING STICKER   999990011003000000000                 WRITTEN     
+
+280STUDENT PARKING STICKER    000100011002550000000                 DUPLICATE   
+
+400FRENCH POSTCARD            000750250500500000000                 WRITTEN     
+
+565BLACK BOOK--FILLED IN      001000030061000000000                 WRITTEN     
+
+743BUDGET MOTEL GUIDE         006060061001250000000                 WRITTEN     
+
+800SATIN SHEET SET            055950010121000000000                 WRITTEN     
+
+899SEARS GIFT CERT.           100000060101000000000                 WRITTEN     
+
+900PLASTIC WHISTLES           001040121001550000000                 WRITTEN     
