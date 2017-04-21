@@ -1,16 +1,19 @@
-04/20/17   TRANSACTION REPORT       PAGE 1                                                                                                                                                                                                                              
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
-                              0     0                                 $000.00   $0000   0000   0000   0000   0000   NOT ON FILE     
+04/21/17   TRANSACTION REPORT       PAGE 1                                                                                          
+CUSTOMER            PRODUCT  PRODUCT                QUANTITY    UNIT      GROSS     SALES    DIS.   DIS.    NET        ERROR        
+NAME                NUMBER   DESCRIPTION            PURCHASED   PRICE     PRICE     TAX      PER    AMT    PRICE       MESSAGE      
+___________________ _______  ____________________   _________  _______  __________  _______  ____   ____   _________   ___________                                                                                                                                      
+LONELY LEO              10   INFLATABLE ENEMY           12     $140.95   $1,691.40  $118.39    5      0    $1,809.79                
+CHARLIE CHEAP          743   BUDGET MOTEL GUIDE          1       $6.06   $1,691.40  $118.39    5      0    $1,809.79                
+WIDOW LADY             565   BLACK BOOK--FILLED IN     123       $1.00     $123.00    $8.61   10      0      $131.61                
+MISSIONARY MIKE         85   HYMNAL                    999      $12.45  $12,437.55  $870.62    8      0    $3,308.17                
+UNKNOWN COMIC          115   BROWN PAPER BAGS            3       $0.05  $12,437.55  $870.62    8      0    $3,308.17                
+MUDFENCE MARTHA        115   BROWN PAPER BAGS          200       $0.05      $10.00    $0.70    2     25       $16.05                
+SAM SENILE             175   2500VITAMIN E TABLETS       7     $100.00      $10.00    $0.70    2     25       $16.05                
+SAM SENILE             175   2500VITAMIN E TABLETS       7     $100.00      $10.00    $0.70    2     25       $16.05                
+SAM SENILE             175   2500VITAMIN E TABLETS       7     $100.00      $10.00    $0.70    2     25       $16.05                
+DATING BUREAU          565   BLACK BOOK--FILLED IN       4       $1.00      $10.00    $0.70    2     25       $16.05                
+DORM COUNCIL           900   PLASTIC WHISTLES          450       $1.04     $468.00   $32.76   15     25      $474.01                
+LONESOME SAL            10   INFLATABLE ENEMY            1     $140.95     $468.00   $32.76   15     25      $474.01                
+BROADMOOR COUNCIL      900   PLASTIC WHISTLES           20       $1.04     $468.00   $32.76   15     25      $474.01                
+DIRTY OLD LADY         899   SEARS GIFT CERT.           10     $100.00     $468.00   $32.76   15     25      $474.01                
+DIRTY OLD LADY         899   SEARS GIFT CERT.           10     $100.00     $468.00   $32.76   15     25      $474.01                
