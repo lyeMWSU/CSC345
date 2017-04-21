@@ -14,7 +14,7 @@
            ORGANIZATION LINE SEQUENTIAL.
 
            SELECT MASTER-FILE
-           ASSIGN TO "VSAM.TXT"
+           ASSIGN "VSAM.TXT"
            ORGANIZATION IS INDEXED
            ACCESS MODE IS RANDOM
            RECORD KEY IS MR-ID
@@ -71,7 +71,7 @@
            05  FILLER                  PIC X(3) VALUE SPACES.
            05  DL-QTY-PCH              PIC ZZ9.
            05  FILLER                  PIC X(3) VALUE SPACES.
-           05  DL-PRO-NUM              PIC ZZ9.
+           05  DL-PRO-NUM              PIC 999.
            05  FILLER                  PIC X(3) VALUE SPACES.
            05  DL-PRO-DES              PIC X(27).
            05  FILLER                  PIC X(3) VALUE SPACES.
@@ -131,9 +131,10 @@
            PERFORM 030-CLOSE.
 
        020-OPEN.
-           OPEN I-O MASTER-FILE
            OPEN INPUT      TRANSACTION-FILE
-                OUTPUT     OUTPUT-FILE.
+                OUTPUT     OUTPUT-FILE
+
+           OPEN I-O MASTER-FILE.
 
        030-CLOSE.
            CLOSE     TRANSACTION-FILE
@@ -150,14 +151,11 @@
            MOVE WS-MO TO HL-MO
            MOVE WS-DAY TO HL-DAY
            MOVE WS-YY TO HL-YY
-           MOVE SPACES TO PRINT-RECORD
-
-           INITIALIZE DC-DETAIL-CALCS.
+           MOVE SPACES TO PRINT-RECORD.
 
 
        200-PROCESSING.
            IF MASTER-SWITCH = "00"
-               DISPLAY MASTER-SWITCH
                PERFORM 210-MATCH
            ELSE
                PERFORM 220-NOT-ON-MASTER
@@ -174,8 +172,9 @@
            MOVE TR-CUS-NAME TO DL-CUS-NAME
            MOVE TR-QTY-PCH TO DL-QTY-PCH
            MOVE TR-PRO-NUM TO DL-PRO-NUM
-           MOVE MR-PRO-DES TO DL-PRO-DES.
+           MOVE MR-PRO-DES TO DL-PRO-DES
 
+           WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
 
        220-NOT-ON-MASTER.
 
@@ -186,8 +185,10 @@
            END-READ.
 
        810-READ-MASTER.
-           READ MASTER-FILE INTO MASTER-RECORD.
-      *     MOVE MR-ID TO MR-PRO-NUM
+           MOVE TF-ID TO MR-ID
+           READ MASTER-FILE INTO MASTER-RECORD
+               AT END MOVE "YES" TO EOD
+           END-READ.
 
        850-HEADINGS.
            MOVE "TRANSACTION REPORT" TO HL-HEAD-TITLE
