@@ -109,7 +109,7 @@
            05  DL-NET-PRI-X
                REDEFINES DL-NET-PRI    PIC X(9).
            05  FILLER                  PIC X(3) VALUE SPACES.
-           05  DL-MESSAGE              PIC X(11) VALUE SPACES.
+           05  DL-MESSAGE              PIC X(22) VALUE SPACES.
 
       *HEADING AREAS...
        01  PC-PAGE-CONTROLS.
@@ -239,10 +239,14 @@
            INITIALIZE DL-DETAIL-LINE.
 
        200-PROCESSING.
+           INITIALIZE DC-DETAIL-CALCS
+           INITIALIZE DL-DETAIL-LINE
            MOVE TR-PRO-NUM TO MR-ID
            READ MASTER-FILE INTO MASTER-RECORD
 
+           PERFORM 210-PROCESSING.
 
+       210-PROCESSING.
            MOVE TR-CUS-NAME TO DL-CUS-NAME
            MOVE TR-QTY-PCH TO DL-QTY-PCH
            MOVE TR-PRO-NUM TO DL-PRO-NUM
@@ -263,11 +267,13 @@
            MOVE DC-SAL-TAX TO DL-SAL-TAX
            MOVE DC-NET-PRI TO DL-NET-PRI
 
+           PERFORM 220-PROCESSING.
+
+       220-PROCESSING.
+
 
            IF MASTER-SWITCH = 00
-
-               MOVE MASTER-SWITCH TO DL-MESSAGE
-
+               CONTINUE
            ELSE
                MOVE ALL "*" TO DL-NET-PRI-X
                MOVE ALL "*" TO DL-PRICE-X
@@ -280,6 +286,22 @@
                MOVE "NOT ON FILE" TO DL-MESSAGE
            END-IF.
 
+           IF MASTER-SWITCH = 00
+               IF TR-QTY-PCH <= MR-MIN-ORD
+                   MOVE ALL "*" TO DL-NET-PRI-X
+                   MOVE SPACES TO DL-GRO-PRI-X
+                   MOVE SPACES TO DL-SAL-TAX-X
+                   MOVE SPACES TO DL-DIS-PER-X
+                   MOVE SPACES TO DL-DIS-AMT-X
+                   MOVE SPACES TO DL-PERCENTAGE
+                   MOVE "BELOW MIN." TO DL-MESSAGE
+           END-IF.
+
+           ADD TR-QTY-PCH TO MR-TOTAL
+           REWRITE MASTER-REC FROM MASTER-RECORD
+               INVALID KEY
+                   MOVE "REWRITE UNSUCCESSFUL" TO DL-MESSAGE
+           END-REWRITE.
 
            WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
        800-READ-TRANS.
