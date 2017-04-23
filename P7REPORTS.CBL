@@ -31,7 +31,7 @@
 
        FD  MASTER-FILE.
        01  MASTER-REC.
-           05  MR-ID                   PIC 999.
+           05  MR-ID                   PIC X(3).
            05                          PIC X(75).
 
        FD  OUTPUT-FILE.
@@ -76,15 +76,14 @@
       *OUTPUT...
        01  DL-DETAIL-LINE.
            05  DL-CUS-NAME             PIC X(20).
-           05  FILLER                  PIC X(3) VALUE SPACES.
+           05  FILLER                  PIC X(2) VALUE SPACES.
            05  DL-PRO-NUM              PIC ZZ9.
-           05  FILLER                  PIC X(3) VALUE SPACES.
+           05  FILLER                  PIC X(2) VALUE SPACES.
            05  DL-PRO-DES              PIC X(23).
            05  DL-PRO-DES-X
                REDEFINES DL-PRO-DES    PIC X(23).
-           05  FILLER                  PIC X(3) VALUE SPACES.
            05  DL-QTY-PCH              PIC ZZ9.
-           05  FILLER                  PIC X(5) VALUE SPACES.
+           05  FILLER                  PIC X(3) VALUE SPACES.
            05  DL-PRICE                PIC $ZZ9.99.
            05  DL-PRICE-X
                REDEFINES DL-PRICE      PIC X(7).
@@ -100,11 +99,12 @@
            05  DL-DIS-PER              PIC ZZ9.
            05  DL-DIS-PER-X
                REDEFINES DL-DIS-PER    PIC X(3).
-           05  FILLER                  PIC X(4) VALUE SPACES.
-           05  DL-DIS-AMT              PIC ZZ9.
+           05  DL-PERCENTAGE           PIC X.
+           05  FILLER                  PIC X(3) VALUE SPACES.
+           05  DL-DIS-AMT              PIC $Z,ZZ9.99.
            05  DL-DIS-AMT-X
-               REDEFINES DL-DIS-AMT    PIC X(3).
-           05  FILLER                  PIC X(4) VALUE SPACES.
+               REDEFINES DL-DIS-AMT    PIC X(9).
+           05  FILLER                  PIC X(3) VALUE SPACES.
            05  DL-NET-PRI              PIC $Z,Z99.99.
            05  DL-NET-PRI-X
                REDEFINES DL-NET-PRI    PIC X(9).
@@ -130,13 +130,13 @@
 
        01  HEADING-TWO.
            05                          PIC X(8) VALUE "CUSTOMER".
-           05  FILLER                  PIC X(12) VALUE SPACES.
+           05  FILLER                  PIC X(10) VALUE SPACES.
            05                          PIC X(7) VALUE "PRODUCT".
            05  FILLER                  PIC X(2) VALUE SPACES.
            05                          PIC X(7) VALUE "PRODUCT".
            05  FILLER                  PIC X(16) VALUE SPACES.
-           05                          PIC X(8) VALUE "QUANTITY".
-           05  FILLER                  PIC X(4) VALUE SPACES.
+           05                          PIC X(4) VALUE "QTY.".
+           05  FILLER                  PIC X(3) VALUE SPACES.
            05                          PIC X(4) VALUE "UNIT".
            05  FILLER                  PIC X(6) VALUE SPACES.
            05                          PIC X(5) VALUE "GROSS".
@@ -145,20 +145,20 @@
            05  FILLER                  PIC X(3) VALUE SPACES.
            05                          PIC X(4) VALUE "DIS.".
            05  FILLER                  PIC X(3) VALUE SPACES.
-           05                          PIC X(4) VALUE "DIS.".
+           05                          PIC X(8) VALUE "DISCOUNT".
            05  FILLER                  PIC X(4) VALUE SPACES.
            05                          PIC X(3) VALUE "NET".
-           05  FILLER                  PIC X(8) VALUE SPACES.
+           05  FILLER                  PIC X(9) VALUE SPACES.
            05                          PIC X(5) VALUE "ERROR".
 
        01  HEADING-THREE.
            05                          PIC X(4) VALUE "NAME".
-           05                          PIC X(16) VALUE SPACES.
+           05                          PIC X(14) VALUE SPACES.
            05                          PIC X(6) VALUE "NUMBER".
            05  FILLER                  PIC X(3) VALUE SPACES.
            05                          PIC X(11) VALUE "DESCRIPTION".
            05  FILLER                  PIC X(12) VALUE SPACES.
-           05                          PIC X(9) VALUE "PURCHASED".
+           05                          PIC X(4) VALUE "PCH.".
            05  FILLER                  PIC X(3) VALUE SPACES.
            05                          PIC X(5) VALUE "PRICE".
            05  FILLER                  PIC X(5) VALUE SPACES.
@@ -168,20 +168,20 @@
            05  FILLER                  PIC X(6) VALUE SPACES.
            05                          PIC X(3) VALUE "PER".
            05  FILLER                  PIC X(4) VALUE SPACES.
-           05                          PIC X(3) VALUE "AMT".
-           05  FILLER                  PIC X(4) VALUE SPACES.
+           05                          PIC X(7) VALUE "AMOUNT".
+           05  FILLER                  PIC X(5) VALUE SPACES.
            05                          PIC X(5) VALUE "PRICE".
            05  FILLER                  PIC X(7) VALUE SPACES.
            05                          PIC X(7) VALUE "MESSAGE".
 
        01  HEADING-FOUR.
-           05                          PIC X(19) VALUE ALL "_".
+           05                          PIC X(17) VALUE ALL "_".
            05                          PIC X(1) VALUE SPACES.
            05                          PIC X(7) VALUE ALL "_".
            05                          PIC X(2) VALUE SPACES.
            05                          PIC X(20) VALUE ALL "_".
            05  FILLER                  PIC X(3) VALUE SPACES.
-           05                          PIC X(9) VALUE ALL "_".
+           05                          PIC X(4) VALUE ALL "_".
            05  FILLER                  PIC X(2) VALUE SPACES.
            05                          PIC X(7) VALUE ALL "_".
            05  FILLER                  PIC X(2) VALUE SPACES.
@@ -191,7 +191,7 @@
            05  FILLER                  PIC X(2) VALUE SPACES.
            05                          PIC X(4) VALUE ALL "_".
            05  FILLER                  PIC X(3) VALUE SPACES.
-           05                          PIC X(4) VALUE ALL "_".
+           05                          PIC X(9) VALUE ALL "_".
            05  FILLER                  PIC X(3) VALUE SPACES.
            05                          PIC X(9) VALUE ALL "_".
            05  FILLER                  PIC X(3) VALUE SPACES.
@@ -242,64 +242,46 @@
            MOVE TR-PRO-NUM TO MR-ID
            READ MASTER-FILE INTO MASTER-RECORD
 
-           IF MASTER-SWITCH = "00"
-               PERFORM 210-MATCH
-           ELSE
-               PERFORM 220-NOT-ON-MASTER
-           END-IF.
-
-           WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
-
-       210-MATCH.
 
            MOVE TR-CUS-NAME TO DL-CUS-NAME
            MOVE TR-QTY-PCH TO DL-QTY-PCH
            MOVE TR-PRO-NUM TO DL-PRO-NUM
            MOVE MR-PRO-DES TO DL-PRO-DES
            MOVE MR-PRICE TO DL-PRICE
+           MOVE ALL "%" TO DL-PERCENTAGE
 
-           IF TR-QTY-PCH > MR-MIN-ORD
-               IF TR-QTY-PCH > MR-QTY-DIS
-                   COMPUTE DC-GRO-PRI = TR-QTY-PCH * MR-PRICE
-                   COMPUTE DC-SAL-TAX = (0.07 * DC-GRO-PRI)
-                   COMPUTE DC-DIS-PER = MR-DIS-PER * 100
-                   COMPUTE DC-DIS-AMT = DC-GRO-PRI * DC-DIS-PER
-                   COMPUTE DC-NET-PRI = (DC-GRO-PRI - DC-DIS-AMT) +
-                       ((DC-GRO-PRI - DC-DIS-AMT) * .07)
-                   MOVE DC-GRO-PRI TO DL-GRO-PRI
-                   MOVE DC-DIS-PER TO DL-DIS-PER
-                   MOVE DC-DIS-AMT TO DL-DIS-AMT
-                   MOVE DC-NET-PRI TO DL-NET-PRI
-                   MOVE DC-SAL-TAX TO DL-SAL-TAX
+           MULTIPLY MR-PRICE BY TR-QTY-PCH GIVING DC-GRO-PRI
+           MULTIPLY MR-DIS-PER BY 100 GIVING DC-DIS-PER
+           MULTIPLY .07 BY DC-GRO-PRI GIVING DC-SAL-TAX
+           COMPUTE DC-DIS-AMT = DC-GRO-PRI * MR-DIS-PER
+           COMPUTE DC-NET-PRI ROUNDED = (DC-GRO-PRI -
+                       DC-DIS-AMT) + DC-SAL-TAX
 
-               ELSE
-                   IF TR-QTY-PCH < MR-MIN-ORD
-                       MOVE
-                       MOVE "BELOW MIN." TO DL-MESSAGE
+           MOVE DC-GRO-PRI TO DL-GRO-PRI
+           MOVE DC-DIS-PER TO DL-DIS-PER
+           MOVE DC-DIS-AMT TO DL-DIS-AMT
+           MOVE DC-SAL-TAX TO DL-SAL-TAX
+           MOVE DC-NET-PRI TO DL-NET-PRI
 
 
-               MOVE ALL "*" TO DL-PRICE-X
+           IF MASTER-SWITCH = 00
+
+               MOVE MASTER-SWITCH TO DL-MESSAGE
+
+           ELSE
                MOVE ALL "*" TO DL-NET-PRI-X
-               MOVE ALL SPACES TO DL-PRO-DES-X
-               MOVE ALL SPACES TO DL-GRO-PRI-X
-               MOVE ALL SPACES TO DL-SAL-TAX-X
-               MOVE ALL SPACES TO DL-DIS-PER-X
-               MOVE ALL SPACES TO DL-DIS-AMT-X
+               MOVE ALL "*" TO DL-PRICE-X
+               MOVE SPACES TO DL-PRO-DES-X
+               MOVE SPACES TO DL-GRO-PRI-X
+               MOVE SPACES TO DL-SAL-TAX-X
+               MOVE SPACES TO DL-DIS-PER-X
+               MOVE SPACES TO DL-DIS-AMT-X
+               MOVE SPACES TO DL-PERCENTAGE
                MOVE "NOT ON FILE" TO DL-MESSAGE
-
            END-IF.
 
 
-      *     WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
-
-
-       220-NOT-ON-MASTER.
-      *     MOVE ALL "*" TO DL-PRICE-X.
-
-
-
-      *     WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
-
+           WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
        800-READ-TRANS.
            MOVE "NO" TO EOD
            READ TRANSACTION-FILE INTO TRANSACTION-RECORD

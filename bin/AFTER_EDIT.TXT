@@ -1,0 +1,14 @@
+
+CUSTOMER NAME    PROD#  PRODUCT DESC          QTY   PRICE      GROSS   SALES TAX   DIS %    DIS AMT     NET PRICE      MESSAGE      
+LONELY LEO         10  INFLATABLE ENEMY        12  $140.95 $  1,691.40  $118.39    5.00   $   84.57 $    1,719.30                   
+CHARLIE CHEAP     743  BUDGET MOTEL GUIDE       1  ********                                         **************  BELOW MIN ORDER 
+WIDOW LADY        565  BLACK BOOK--FILLED IN  123  $  1.00 $    123.00  $  8.61   10.00   $   12.30 $      118.44                   
+MISSIONARY MIKE    85  HYMNAL                 999  $ 12.45 $ 12,437.55  $870.62    8.50   $1,057.19 $   12,176.98                   
+UNKNOWN COMIC     115  BROWN PAPER BAGS         3  ********                                         **************  BELOW MIN ORDER 
+MUDFENCE MARTHA   115  BROWN PAPER BAGS       200  $  0.05 $     10.00  $   .70    2.50   $     .25 $       10.43                   
+SAM SENILE        175  2500VITAMIN E TABLETS    7  $100.00                                                                          
+DATING BUREAU     565  BLACK BOOK--FILLED IN    4  $  1.00                                                                          
+DORM COUNCIL      900  PLASTIC WHISTLES       450  $  1.04 $    468.00  $ 32.76   15.50   $   72.54 $      423.14                   
+LONESOME SAL       10  INFLATABLE ENEMY         1  ********                                         **************  BELOW MIN ORDER 
+BROADMOOR COUNCIL 900  PLASTIC WHISTLES        20  $  1.04                                                                          
+DIRTY OLD LADY    899  SEARS GIFT CERT.        10  $100.00                                                                          

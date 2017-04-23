@@ -1,0 +1,37 @@
+CUSTOMER NAME  PROD NUM    PROD DESC           QTY  UNIT $     GROSS $  SALES TAX  DISCOUNT  DISCOUNT AMT   NET PRICE               
+
+LONELY LEO          10 INFLATABLE ENEMY         12 $140.95  $  1,691.40  $118.398    5.00 $     84.57  $     1,725.23               
+                                                                                                                                    
+
+CHARLIE CHEAP      743 BUDGET MOTEL GUIDE        1 $  6.06                                                                          
+                                                                                                                                    
+
+WIDOW LADY         565 BLACK BOOK--FILLED IN   123 $  1.00  $    123.00  $  8.610   10.00 $     12.30  $       119.31               
+                                                                                                                                    
+
+MISSIONARY MIKE     85 HYMNAL                  999 $ 12.45  $ 12,437.55  $870.628    8.50 $  1,057.19  $    12,250.99               
+                                                                                                                                    
+
+UNKNOWN COMIC      115 BROWN PAPER BAGS          3 $   .05                                                                          
+                                                                                                                                    
+
+MUDFENCE MARTHA    115 BROWN PAPER BAGS        200 $   .05  $     10.00  $   .700    2.50 $       .25  $        10.45               
+                                                                                                                                    
+
+SAM SENILE         175 2500VITAMIN E TABLETS     7 $100.00                                             **************               
+                                                                                                      BELOW MIN. ORDER              
+
+DATING BUREAU      565 BLACK BOOK--FILLED IN     4 $  1.00                                             **************               
+                                                                                                      BELOW MIN. ORDER              
+
+DORM COUNCIL       900 PLASTIC WHISTLES        450 $  1.04  $    468.00  $ 32.760   15.50 $     72.54  $       428.22               
+                                                                                                                                    
+
+LONESOME SAL        10 INFLATABLE ENEMY          1 $140.95                                                                          
+                                                                                                                                    
+
+BROADMOOR COUNCIL  900 PLASTIC WHISTLES         20 $  1.04                                             **************               
+                                                                                                      BELOW MIN. ORDER              
+
+DIRTY OLD LADY     899 SEARS GIFT CERT.         10 $100.00  $  1,000.00  $ 70.000   10.00 $    100.00  $       970.00               
+                                                                                                                                    
