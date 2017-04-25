@@ -1,0 +1,15 @@
+032  JIM NAYSEUM                           VD          D
+009                                        ID          D
+032  JANE PLAIN          0900000160728     VA          A
+010                      10                VC          C
+850  QUEENIE             1700000160401     VA          A
+010  JAMES J JONES         01000160101     VC          C
+057  ALREADY THERE       0500000170101     IA          A
+063                      08                IC          C
+008  FRANK FURST         0500000170203     VA          A
+070                      07                IT          X
+049  X TRA               2500000170101     VA          A
+032                        08000           VC          C
+084                        10000           VC          C
+120  NELLIE NOVICETTE    0800100           VC          C
+084  ARM AND HAMMER                        ID          D

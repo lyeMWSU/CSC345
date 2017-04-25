@@ -1,4 +1,4 @@
-04/19/17     INPUT PROCEDURE       PAGE 1                                                                                                                       
+04/23/17     INPUT PROCEDURE       PAGE 1                                                                                                                       
 
 004FAVORITE TOOTHBRUSH                  01098    001100     125                 
 
@@ -26,7 +26,7 @@
 
 1752500VITAMIN E TABLETS                10000    002012     010                 
 
-899HOLLYWOOD GIFT CERT.                 10000    006010     100                 04/19/17     OUTPUT PROCEDURE      PAGE 2                                                                                                                       
+899HOLLYWOOD GIFT CERT.                 10000    006010     100                 04/23/17     OUTPUT PROCEDURE      PAGE 2                                                                                                                       
 
 001WHITE LIGHTNING            000100350151750000000                 WRITTEN     
 

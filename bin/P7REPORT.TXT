@@ -1,4 +1,4 @@
-04/23/17   TRANSACTION REPORT       PAGE 1                                                                                          
+04/25/17   TRANSACTION REPORT       PAGE 1                                                                                          
 CUSTOMER          PRODUCT  PRODUCT                QTY.   UNIT      GROSS     SALES    DIS.   DISCOUNT    NET         ERROR          
 NAME              NUMBER   DESCRIPTION            PCH.   PRICE     PRICE     TAX      PER    AMOUNT      PRICE       MESSAGE        
 _________________ _______  ____________________   ____  _______  __________  _______  ____   _________   _________   ___________                                                                                                                                        
