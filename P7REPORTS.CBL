@@ -1,7 +1,7 @@
       ******************************************************************
-      * Author:
+      * Author:	LISA YE
       * Date:
-      * Purpose:
+      * Purpose:	PROGRAM 07
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. PROGRAM07.

@@ -1,45 +1,45 @@
-04/25/17     INPUT PROCEDURE       PAGE 1                                                                                                                       
+04/27/17     INPUT PROCEDURE       PAGE 1                                                                                                                       
 
-010  JAMES JONES         08190661612310100005000141031 A                        
+010  JAMES JONES         08190661612310000005000141031 A                        
 
-021  SYLVIA SERENE       00790671312310100001000140928 A                        
+021  SYLVIA SERENE       00790671312310000001000140928 A                        
 
-021  ANNE CHOVEY         05050001412310100001000150401 A                        
+021  ANNE CHOVEY         05050001412310000001000150401 A                        
 
-032  JIM NAYSEUM         12750001511070300008111150101 A                        
+032  JIM NAYSEUM         12750001511070000008111150101 A                        
 
 040  MICK ICK            04101221708310000000000150101 A                        
 
-057  CHESTER FESTER      11010001205200111107777141115 A                        
+057  CHESTER FESTER      11010001205200000007777141115 A                        
 
-060  AL CATRAZ           05080051201010900020000141108 A                        
+060  AL CATRAZ           05080051201010000020000141108 A                        
 
-084  ARMAND HAMMER       10040001004011000085000141111 A                        
+084  ARMAND HAMMER       10040001004010000085000141111 A                        
 
-092  JACK GOUP           00540011402150800012000141023 A                        
+092  JACK GOUP           00540011402150000012000141023 A                        
 
-120  NELLIE NOVICE       15000001309090001001010141101 A                        
+120  NELLIE NOVICE       15000001309090000001010141101 A                        
 
-800  KING                18120001501012000075000141111 A                        04/25/17     OUTPUT PROCEDURE      PAGE 2                                                                                                                       
+800  KING                18120001501010000075000141111 A                        04/27/17     OUTPUT PROCEDURE      PAGE 2                                                                                                                       
 
-010JAMES JONES         .08190661612310100005000141031               WRITTEN     
+010JAMES JONES         08190661612310100005000141031                WRITTEN     
 
-021SYLVIA SERENE       .00790671312310100001000140928               WRITTEN     
+021SYLVIA SERENE       00790671312310100001000140928                WRITTEN     
 
-021ANNE CHOVEY         .05050001412310100001000150401               DUPLICATE   
+021ANNE CHOVEY         05050001412310100001000150401                DUPLICATE   
 
-032JIM NAYSEUM         .12750001511070300008111150101               WRITTEN     
+032JIM NAYSEUM         12750001511070300008111150101                WRITTEN     
 
-040MICK ICK            .04101221708310000000000150101               WRITTEN     
+040MICK ICK            04101221708310000000000150101                WRITTEN     
 
-057CHESTER FESTER      .11010001205200111107777141115               WRITTEN     
+057CHESTER FESTER      11010001205200111107777141115                WRITTEN     
 
-060AL CATRAZ           .05080051201010900020000141108               WRITTEN     
+060AL CATRAZ           05080051201010900020000141108                WRITTEN     
 
-084ARMAND HAMMER       .10040001004011000085000141111               WRITTEN     
+084ARMAND HAMMER       10040001004011000085000141111                WRITTEN     
 
-092JACK GOUP           .00540011402150800012000141023               WRITTEN     
+092JACK GOUP           00540011402150800012000141023                WRITTEN     
 
-120NELLIE NOVICE       .15000001309090001001010141101               WRITTEN     
+120NELLIE NOVICE       15000001309090001001010141101                WRITTEN     
 
-800KING                .18120001501012000075000141111               WRITTEN     
+800KING                18120001501012000075000141111                WRITTEN     

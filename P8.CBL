@@ -1,7 +1,7 @@
       ******************************************************************
-      * Author:
+      * Author:    LISA YE
       * Date:
-      * Purpose:
+      * Purpose:   PROGRAM 08
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. PROGRAM08.
@@ -56,7 +56,7 @@
            05  IR-SAL-NUM              PIC XXX.
            05  FILLER                  PIC XX.
            05  IR-NAME                 PIC X(20).
-           05  IR-COM-PER              PIC V99.
+           05  IR-COM-PER              PIC XX.
            05  IR-TOT-SAL              PIC XXXXX.
            05  IR-PRO-EOD              PIC XXXXXX.
            05  IR-MON-COM              PIC XXXXX.
@@ -69,7 +69,7 @@
        01  DL-DETAIL-LINE.
            05  DL-SAL-NUM              PIC XXX.
            05  DL-NAME                 PIC X(20).
-           05  DL-COM-PER              PIC .99.
+           05  DL-COM-PER              PIC XX.
            05  DL-TOT-SAL              PIC XXXXX.
            05  DL-PRO-EOD              PIC XXXXXX.
            05  DL-MON-COM              PIC XXXXX.
@@ -133,7 +133,7 @@
            MOVE IR-YTD-COM TO DL-YTD-COM
            MOVE IR-LAS-ACT TO DL-LAS-ACT
            MOVE SPACES TO DL-TYP-A
-
+           MOVE ZEROS TO IR-MON-COM
 
            MOVE INPUT-RECORD TO DR-REC
            WRITE PRINT-RECORD FROM DR-RECORD AFTER 2
