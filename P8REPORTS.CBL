@@ -133,7 +133,6 @@
                      MASTER-FILE
            STOP RUN.
 
-
        100-INITIALIZE.
            MOVE "NO " TO EOD
       *DATE
@@ -211,7 +210,6 @@
            ELSE
                MOVE "INVALID TRANS.CODE" TO DL-MESSAGE
            END-IF
-
 
            REWRITE MASTER-REC FROM MASTER-RECORD
                INVALID KEY
