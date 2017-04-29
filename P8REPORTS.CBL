@@ -27,15 +27,15 @@
        DATA DIVISION.
        FILE SECTION.
        FD  TRANSACTION-FILE.
-       01  TF-ID                        PIC X(80).
+       01  TF-ID                        PIC X(56).
 
        FD  MASTER-FILE.
        01  MASTER-REC.
-           05  MR-ID                   PIC X(3).
-           05                          PIC X(75).
+           05  MR-ID                   PIC 9(3).
+           05                          PIC X(49).
 
        FD  OUTPUT-FILE.
-       01  PRINT-RECORD                PIC X(132).
+       01  PRINT-RECORD                PIC X(80).
 
        WORKING-STORAGE SECTION.
 
@@ -46,46 +46,32 @@
 
       *INPUT-RECORD...
        01  TRANSACTION-RECORD.
-           05  TR-SAL-NUM              PIC XXX.
+           05  TR-SAL-NUM              PIC 999.
            05  FILLER                  PIC XX.
            05  TR-NAME                 PIC X(20).
-           05  TR-COM-PER              PIC XX.
-           05  TR-TOT-SAL              PIC XXXXX.
-           05  TR-PRO-EOD              PIC XXXXXX.
-           05  FILLER                  PIC X(5).
-           05  TR-CODES                PIC XX.
-           05  FILLER                  PIC X(10).
+           05  TR-COM-PER              PIC V99.
+           05  TR-TOT-SAL              PIC 9(5).
+           05  TR-PRO-EOD              PIC X(6).
+           05  FILLER                  PIC X(17).
            05  TR-TYP-A                PIC X.
 
        01  MASTER-RECORD.
-           05  MR-SAL-NUM              PIC XXX.
+           05  MR-SAL-NUM              PIC 999.
            05  MR-NAME                 PIC X(20).
            05  MR-COM-PER              PIC V99.
-           05  MR-TOT-SAL              PIC XXXXX.
-           05  MR-PRO-EOD              PIC XXXXXX.
-           05  MR-MON-COM              PIC XXXXX.
-           05  MR-YTD-COM              PIC XXXXX.
+           05  MR-TOT-SAL              PIC 9(5).
+           05  MR-PRO-EOD              PIC X(6).
+           05  MR-MON-COM              PIC 9(5).
+           05  MR-YTD-COM              PIC 9(5).
            05  MR-LAS-ACT              PIC XXXXXX.
-           05  MR-TYP-A                PIC X.
+
+       01  DC-DETAIL-CALCS.
+           05 DC-MON-COM               PIC 9(5).
 
       *OUTPUT...
        01  DL-DETAIL-LINE.
-           05  DL-SAL-NUM              PIC XXX.
-           05  FILLER                  PIC X(2).
-           05  DL-NAME                 PIC X(20).
-           05  DL-COM-PER              PIC XX.
-           05  DL-TOT-SAL              PIC X(5).
-           05  DL-PRO-EOD              PIC XXXXXX.
-           05  FILLER                  PIC X(3).
-           05  DL-DATE.
-               10 DL-MO                PIC XX/.
-               10 DL-DAY               PIC XX/.
-               10 DL-YY                PIC XX.
-           05  FILLER                  PIC X(2).
-           05  DL-CODES                PIC XX.
-           05  FILLER                  PIC X(2).
-           05  DL-TYP-A                PIC X.
-           05  FILLER                  PIC X(2).
+           05  DL-REC-OUT              PIC X(56).
+           05  FILLER                  PIC X(5).
            05  DL-MESSAGE              PIC X(22).
 
 
@@ -116,9 +102,7 @@
        000-MAINLINE.
            PERFORM 020-OPEN
            PERFORM 100-INITIALIZE
-           PERFORM 850-HEADINGS
            PERFORM 800-READ-TRANS
-               UNTIL EOD = "YES"
            PERFORM 030-CLOSE.
 
        020-OPEN.
@@ -137,51 +121,36 @@
            MOVE "NO " TO EOD
       *DATE
            ACCEPT WS-DATE FROM DATE
-           MOVE WS-MO TO DL-MO
-           MOVE WS-DAY TO DL-DAY
-           MOVE WS-YY TO DL-YY
-
-           ACCEPT WS-DATE FROM DATE
            MOVE WS-MO TO HL-MO
            MOVE WS-DAY TO HL-DAY
            MOVE WS-YY TO HL-YY
            MOVE SPACES TO PRINT-RECORD.
 
        200-PROCESSING.
-      *     INITIALIZE DL-DETAIL-LINE
-           MOVE TR-SAL-NUM TO MR-ID
-           READ MASTER-FILE INTO MASTER-RECORD
+           MOVE TRANSACTION-RECORD TO DL-REC-OUT
 
            PERFORM 210-PROCESSING.
 
        210-PROCESSING.
-           MOVE TR-SAL-NUM TO DL-SAL-NUM
-           MOVE TR-NAME TO DL-NAME
-           MOVE TR-COM-PER TO DL-COM-PER
-           MOVE TR-TOT-SAL TO DL-TOT-SAL
-           MOVE TR-PRO-EOD TO DL-PRO-EOD
-           MOVE TR-CODES TO DL-CODES
-           MOVE TR-TYP-A TO DL-TYP-A
-
-           PERFORM 220-PROCESSING.
-
-       220-PROCESSING.
            INITIALIZE DL-MESSAGE
 
-           MOVE TR-TYP-A TO DL-TYP-A
-
            IF TR-TYP-A = "A" OR "D" OR "C"
+           MOVE TR-SAL-NUM TO MR-ID
+           READ MASTER-FILE INTO MASTER-RECORD
                IF TR-TYP-A = "A"
                    IF MR-SAL-NUM = TR-SAL-NUM
                        MOVE "DUPLICATE ADD" TO DL-MESSAGE
                    ELSE
                        MOVE "ADD" TO DL-MESSAGE
+                       PERFORM 230-ADD
                    END-IF
+
                END-IF
 
                IF TR-TYP-A = "D"
-                   IF MR-NAME = TR-NAME
+                   IF TR-NAME(1:6) = MR-NAME(1:6)
                        MOVE "DELETE" TO DL-MESSAGE
+                       PERFORM 250-DELETE
                    ELSE
                        MOVE "NO MASTER TO DELETE" TO DL-MESSAGE
                    END-IF
@@ -205,35 +174,59 @@
                    ELSE
                        MOVE "CHANGE" TO DL-MESSAGE
                    END-IF
-
+                   PERFORM 240-CHANGE
                END-IF
            ELSE
-               MOVE "INVALID TRANS.CODE" TO DL-MESSAGE
+               MOVE "INVALID TRANS. CODE" TO DL-MESSAGE
            END-IF
 
-           REWRITE MASTER-REC FROM MASTER-RECORD
-               INVALID KEY
-                   MOVE "REWRITE UNSUCCESSFUL" TO DL-MESSAGE
-           END-REWRITE.
+           PERFORM 220-PROCESSING.
 
+       220-PROCESSING.
            WRITE PRINT-RECORD FROM DL-DETAIL-LINE AFTER 1.
+           WRITE MASTER-REC FROM MASTER-RECORD AFTER 1.
+           REWRITE MASTER-REC FROM MASTER-RECORD.
+
+       230-ADD.
+           MOVE TR-SAL-NUM TO MR-SAL-NUM
+           MOVE TR-NAME TO MR-NAME
+           MOVE TR-COM-PER TO MR-COM-PER
+           MOVE TR-TOT-SAL TO MR-TOT-SAL
+           MOVE ZEROS TO MR-MON-COM
+           MOVE WS-DATE TO MR-LAS-ACT.
+
+
+       240-CHANGE.
+           MOVE ZEROS TO TR-COM-PER
+           MOVE TR-COM-PER TO MR-COM-PER
+           IF TR-TOT-SAL = SPACES
+               CONTINUE
+           ELSE
+               IF TR-PRO-EOD < MR-PRO-EOD
+                   IF MR-COM-PER = SPACES
+                       COMPUTE DC-MON-COM = TR-TOT-SAL * TR-COM-PER
+                   ELSE
+                       COMPUTE DC-MON-COM = TR-TOT-SAL * MR-COM-PER
+                   END-IF
+                   ADD DC-MON-COM TO MR-MON-COM
+                   ADD DC-MON-COM TO MR-YTD-COM
+               ELSE
+                   CONTINUE
+               END-IF
+               ADD TR-TOT-SAL TO MR-TOT-SAL
+           END-IF.
+
+
+       250-DELETE.
+           DELETE MASTER-FILE.
+
        800-READ-TRANS.
            MOVE "NO" TO EOD
-           READ TRANSACTION-FILE INTO TRANSACTION-RECORD
-               AT END
-                   MOVE "YES" TO EOD
-               NOT AT END
-                   PERFORM 200-PROCESSING
-           END-READ.
-
-       850-HEADINGS.
-           MOVE "TRANSACTION REPORT" TO HL-HEAD-TITLE
-           ADD 1 TO PC-PAGE-NUM
-           MOVE PC-PAGE-NUM TO HL-PAGE-NUM
-      *     WRITE PRINT-RECORD FROM HL-HEADING-LINE AFTER PAGE
-      *     WRITE PRINT-RECORD FROM HEADING-TWO AFTER 1
-      *     WRITE PRINT-RECORD FROM HEADING-THREE AFTER 1
-      *     WRITE PRINT-RECORD FROM HEADING-FOUR AFTER 1
-           MOVE SPACES TO PRINT-RECORD
-           WRITE PRINT-RECORD
-           ADD 5 TO PC-LINES-USED.
+           PERFORM UNTIL EOD = "YES"
+             READ TRANSACTION-FILE INTO TRANSACTION-RECORD
+                 AT END
+                     MOVE "YES" TO EOD
+                 NOT AT END
+                     PERFORM 200-PROCESSING
+             END-READ
+           END-PERFORM.

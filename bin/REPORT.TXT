@@ -1,0 +1,16 @@
+
+032  JIM NAYSEUM                           VD          D     DELETED            
+009                                        ID          D     NO MASTER TO DELETE
+032  JANE PLAIN          0900000160728     VA          A     ADDED              
+010                      10                VC          C     CHANGED            
+850  QUEENIE             1700000160401     VA          A     ADDED              
+010  JAMES J JONES         01000160101     VC          C     CHANGED            
+057  ALREADY THERE       0500000170101     IA          A     DUPLICATE ADD      
+063                      08                IC          C     NO MASTER TO CHANGE
+008  FRANK FURST         0500000170203     VA          A     ADDED              
+070                      07                IT          X     INVALID TRANS. CODE
+049  X TRA               2500000170101     VA          A     ADDED              
+032                        08000           VC          C     CHANGED            
+084                        10000           VC          C     CHANGED            
+120  NELLIE NOVICETTE    0800100           VC          C     CHANGED            
+084  ARM AND HAMMER                        ID          D     FIALS CORR. CHECK  

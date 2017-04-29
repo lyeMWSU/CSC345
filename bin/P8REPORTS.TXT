@@ -1,16 +1,16 @@
-                                                                                                                                    
-032  JIM NAYSEUM                         04/27/17  VD  D  DELETE                                                                    
-009                                      04/27/17  ID  D  NO MASTER TO DELETE                                                       
-032  JANE PLAIN          0900000160728   04/27/17  VA  A  DUPLICATE ADD                                                             
-010                      10              04/27/17  VC  C  CHANGE                                                                    
-850  QUEENIE             1700000160401   04/27/17  VA  A  ADD                                                                       
-010  JAMES J JONES         01000160101   04/27/17  VC  C  NO MASTER TO CHANGE                                                       
-057  ALREADY THERE       0500000170101   04/27/17  IA  A  DUPLICATE ADD                                                             
-063                      08              04/27/17  IC  C  CHANGE                                                                    
-008  FRANK FURST         0500000170203   04/27/17  VA  A  ADD                                                                       
-070                      07              04/27/17  IT  X  INVALID TRANS.CODE                                                        
-049  X TRA               2500000170101   04/27/17  VA  A  ADD                                                                       
-032                        08000         04/27/17  VC  C  NO MASTER TO CHANGE                                                       
-084                        10000         04/27/17  VC  C  NO MASTER TO CHANGE                                                       
-120  NELLIE NOVICETTE    0800100         04/27/17  VC  C  CHANGE                                                                    
-084  ARM AND HAMMER                      04/27/17  ID  D  NO MASTER TO DELETE                                                       
+
+032  JIM NAYSEUM                           VD          D     DELETE             
+009                                        ID          D     NO MASTER TO DELETE
+032  JANE PLAIN          0900000160728     VA          A     DUPLICATE ADD      
+010                      10                VC          C     CHANGE             
+850  QUEENIE             1700000160401     VA          A     ADD                
+010  JAMES J JONES         01000160101     VC          C     NO MASTER TO CHANGE
+057  ALREADY THERE       0500000170101     IA          A     DUPLICATE ADD      
+063                      08                IC          C     CHANGE             
+008  FRANK FURST         0500000170203     VA          A     ADD                
+070                      07                IT          X     INVALID TRANS. CODE
+049  X TRA               2500000170101     VA          A     ADD                
+032                        08000           VC          C     NO MASTER TO CHANGE
+084                        10000           VC          C     NO MASTER TO CHANGE
+120  NELLIE NOVICETTE    0800100           VC          C     CHANGE             
+084  ARM AND HAMMER                        ID          D     NO MASTER TO DELETE
